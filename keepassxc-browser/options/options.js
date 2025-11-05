@@ -733,7 +733,7 @@ options.initSitePreferences = function() {
 
         // Page URL
         row.children[0].children[0].children[0].value = url;
-        row.children[0].children[0]?.addEventListener('dblclick', (e) => 
+        row.children[0].children[0]?.addEventListener('dblclick', (e) =>
             enterEditMode(e, row, inputField, editButton, cancelButton, saveButton)
         );
 
@@ -885,7 +885,8 @@ const getBrowserId = function(userAgent) {
         { findStr: 'Firefox', name: 'Mozilla Firefox' },
         { findStr: 'Edg', name: 'Microsoft Edge' },
         { findStr: 'OPR', name: 'Opera' },
-        { findStr: 'Chrome', name: 'Chrome/Chromium' }
+        { findStr: 'Chrome', name: 'Chrome/Chromium' },
+        { findStr: 'Safari', name: 'Safari' },
     ];
 
     const getVersion = (agent, findStr) => {
@@ -898,7 +899,7 @@ const getBrowserId = function(userAgent) {
             return `${query.name} ${getVersion(userAgent, query.findStr)}`;
         }
     }
-  
+
     return 'Other/Unknown';
 };
 
@@ -926,7 +927,7 @@ const updateDropdownPosition = function(e, dropdown) {
     if (!rect) {
         return;
     }
-    
+
     const zoom = getComputedStyle(document.body).zoom || 1;
     const scrollTop = document.defaultView.scrollY / zoom;
     const scrollLeft = document.defaultView?.scrollX / zoom;
