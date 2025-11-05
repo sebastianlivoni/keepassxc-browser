@@ -49,8 +49,9 @@ PasswordIcon.prototype.initField = function(field) {
 };
 
 PasswordIcon.prototype.createIcon = function(field) {
-    const className = kpxc.isFirefox ? 'key-moz' : 'key';
-    const size = this.calculateIconSize(field);
+    const className = isSafari() ? 'key-safari' : (isFirefox() ? 'key-moz' : 'key');
+    const size = (field.offsetHeight > 28) ? 24 : 16;
+    const offset = kpxcUI.calculateIconOffset(field, size);
 
     const icon = kpxcUI.createElement('div', 'kpxc kpxc-pwgen-icon ' + className,
         {

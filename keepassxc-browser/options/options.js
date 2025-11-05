@@ -106,6 +106,11 @@ options.initGeneralSettings = async function() {
             $('#defaultGroupButtonReset').disabled = true;
         }
 
+        // Autofill HTTP Auth dialogs is not supported in Safari Web Extensions.
+        if (checkbox.name === 'autoFillAndSend' && isSafari()) {
+            checkbox.disabled = true;
+        }
+
         checkbox.addEventListener('click', changeCheckboxValue);
     }
 
@@ -356,6 +361,9 @@ options.initGeneralSettings = async function() {
             siteListing.append(document.createElement('br'));
         }
     }
+
+    // Show and hide Safari specific features
+    options.showHideSafariSelectors()
 };
 
 // Also hides/disables any options with KeePassXC versions that are too old
@@ -898,10 +906,16 @@ const getBrowserId = function(userAgent) {
         if (userAgent?.indexOf(query.findStr) > -1) {
             return `${query.name} ${getVersion(userAgent, query.findStr)}`;
         }
-    }
+
 
     return 'Other/Unknown';
 };
+
+options.showHideSafariSelectors = function() {
+    let selector = isSafari() ? '.hide-safari' : '.show-safari'
+
+    document.querySelectorAll(selector).forEach((elem) => elem.hide())
+}
 
 // Update the number of enabled settings to the button text
 const updateSettingsButtonText = function(buttonElement, enabledOptions = []) {

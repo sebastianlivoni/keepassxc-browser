@@ -966,6 +966,8 @@ browser.runtime.onMessage.addListener(async function(req, sender) {
             if (await isIframeAllowed()) {
                 sendMessage('request_autotype', [ window.location.hostname ]);
             }
+        } else if (req.action === 'get_theme') {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
     }
 });

@@ -1457,5 +1457,13 @@
     "gettingStartedNewUser": {
         "message": "Are you a new user? Check links to our documentation.",
         "description": "Are you a new user? Check links to our documentation."
+    },
+    "optionsUnsupportedKeyboardShortcutsSafari": {
+        "message": "Changing keyboard shortcuts is not supported in Safari.",
+        "description": "Info message about unsupported ability to change keyboard shortcuts in Safari."
+    },
+    "optionsUnsupportedAutofillHTTPAuthDialogsSafari": {
+        "message": "Autofill HTTP Auth dialogs is not supported in Safari.",
+        "description": "Info message about autofilling HTTP Auth dialogs is unsupported in Safari."
     }
 }

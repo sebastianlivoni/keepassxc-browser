@@ -139,8 +139,11 @@ TOTPFieldIcon.prototype.initField = async function(field, segmented) {
 };
 
 TOTPFieldIcon.prototype.createIcon = function(field, segmented = false) {
-    const className = kpxc.isFirefox ? 'moz' : 'default';
-    const size = this.calculateIconSize(field);
+    const className = (isSafari() ? 'safari' : (isFirefox() ? 'moz' : 'default'));
+
+    // Size the icon dynamically, but not greater than 24 or smaller than 14
+    const size = Math.max(Math.min(24, field.offsetHeight - 4), 14);
+    const offset = kpxcUI.calculateIconOffset(field, size);
 
     const icon = kpxcUI.createElement('div', 'kpxc kpxc-totp-icon ' + className,
         {
