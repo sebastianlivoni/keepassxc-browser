@@ -10,7 +10,7 @@ keepassClient.webSocket = null;
 const kpErrors = {
     UNKNOWN_ERROR: 0,
     DATABASE_NOT_OPENED: 1,
-    DATABASE_HASH_NOT_RECEIVED: 2,  
+    DATABASE_HASH_NOT_RECEIVED: 2,
     CLIENT_PUBLIC_KEY_NOT_RECEIVED: 3,
     CANNOT_DECRYPT_MESSAGE: 4,
     TIMEOUT_OR_NOT_CONNECTED: 5,
@@ -416,7 +416,7 @@ keepassClient.onNativeMessage = function(response) {
     if (response?.name === 'proxy_message') {
         response = response.userInfo
     }
-    
+
     // Handle database lock/unlock status
     if (response.action === kpActions.DATABASE_LOCKED || response.action === kpActions.DATABASE_UNLOCKED) {
         keepass.updateDatabase();
@@ -436,9 +436,9 @@ keepassClient.connectToWebSocket = async function() {
         if (keepassClient.webSocket) {
             keepassClient.webSocket.close();
         }
-    
+
         console.log(`${EXTENSION_NAME}: Connecting to WebSocket`);
-    
+
         try {
             keepassClient.webSocket = new WebSocket('ws://localhost:7580');
             keepassClient.webSocket.addEventListener('close', (event) => {

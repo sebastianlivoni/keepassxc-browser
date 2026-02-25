@@ -906,7 +906,7 @@ const getBrowserId = function(userAgent) {
         if (userAgent?.indexOf(query.findStr) > -1) {
             return `${query.name} ${getVersion(userAgent, query.findStr)}`;
         }
-
+    }
 
     return 'Other/Unknown';
 };
